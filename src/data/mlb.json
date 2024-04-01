@@ -1,0 +1,59 @@
+{
+    "teams": {
+        "translator":{
+            "Yankees": "NY Yankees",
+            "Pirates": "Pittsburgh",
+            "Tigers": "Detroit",
+            "Brewers": "Milwaukee",
+            "Diamondbacks": "Arizona",
+            "Guardians": "Cleveland",
+            "Dodgers": "LA Dodgers",
+            "Rangers": "Texas",
+            "Braves": "Atlanta",
+            "Twins": "Minnesota",
+            "Orioles": "Baltimore",
+            "Reds": "Cincinnati",
+            "Red Sox": "Boston",
+            "Padres": "San Diego",
+            "Blue Jays": "Toronto",
+            "Giants": "San Francisco",
+            "Rays": "Tampa Bay",
+            "Mariners": "Seattle",
+            "Phillies": "Philadelphia",
+            "Nationals": "Washington",
+            "Royals": "Kansas City",
+            "Cubs": "Chi Cubs",
+            "Angels": "LA Angels",
+            "Rockies": "Colorado",
+            "Athletics": "Oakland",
+            "Cardinals": "St. Louis",
+            "White Sox": "Chi White Sox",
+            "Mets": "NY Mets",
+            "Astros": "Houston",
+            "Marlins": "Miami"
+        }
+    },
+    "nextGames": {
+        "date": "20240101",
+        "games": [
+            {
+                "away": "Timberwolves",
+                "home": "Knicks",
+                "ats": {
+                    "favorite": "DEN",
+                    "spread": "-4.5"
+                },
+                "o/u": "231.5"
+            },
+            {
+                "away": "Cavaliers",
+                "home": "Raptors",
+                "ats": {
+                    "favorite": "DEN",
+                    "spread": "-4.5"
+                },
+                "o/u": "231.5"
+            }
+        ]
+    }
+}
