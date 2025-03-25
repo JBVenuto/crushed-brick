@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { pastReulutsandNextGames, historicalTrends } from './utils/scrapper';
 import './App.scss';
+import mlb from './data/mlb.json';
 
 function App() {
   const [league, setLeague] = useState('mlb');
@@ -8,10 +9,23 @@ function App() {
   const selectedLeague = leagueName => leagueName === league;
 
   const getData = async () => {
-    // const historicalOdds = await historicalTrends(league);
-    const recentGames = await pastReulutsandNextGames(league);
+    const [recentGames, historicalOdds] = await Promise.all([pastReulutsandNextGames(league), historicalTrends(league)])
 
-    console.log(recentGames);
+    console.log('recent games:\n', recentGames);
+    console.log('historic trends:\n', historicalOdds)
+    recentGames.nextGames.forEach(game => {
+      const awayRecord = historicalOdds[mlb.teams.translator[game.away]];
+      const homeRecord = historicalOdds[mlb.teams.translator[game.home]];
+      const overUnder = parseFloat(awayRecord.overUnder) + parseFloat(homeRecord.overUnder);
+      const againstTheSpread = parseFloat(awayRecord.againstTheSpread) + parseFloat(homeRecord.againstTheSpread);
+      console.log({
+        away: awayRecord,
+        home: homeRecord,
+        overUnder: overUnder / 2,
+        againstTheSpread: againstTheSpread / 2
+      })
+      
+    })
   }
 
   return (
