@@ -17,9 +17,10 @@ function App() {
     setGamePredictions(
       recentGames.nextGames.map((game) => {
         const awayRecord = historicalOdds[teamList[league][game.away]],
-          homeRecord = historicalOdds[teamList[league][game.home]],
-          overUnder =
-            parseFloat(awayRecord.overUnder) + parseFloat(homeRecord.overUnder),
+          homeRecord = historicalOdds[teamList[league][game.home]];
+        const overUnderPercent =
+            (parseFloat(awayRecord.overUnder) + parseFloat(homeRecord.overUnder)) / 2,
+          overUnder = overUnderPercent > 0.51 ? 'Over' : overUnderPercent < 0.49 ? 'Under' : 'Too Close',
           againstTheSpread =
             parseFloat(awayRecord.againstTheSpread) >
             parseFloat(homeRecord.againstTheSpread) + 0.02
@@ -27,12 +28,12 @@ function App() {
               : parseFloat(awayRecord.againstTheSpread) + 0.02 <
                 parseFloat(homeRecord.againstTheSpread)
               ? game.home
-              : "too close";
+              : 'Too Close';
 
         return {
           away: game.away,
           home: game.home,
-          overUnder: overUnder / 2,
+          overUnder: overUnder,
           againstTheSpread: againstTheSpread,
         };
       })
